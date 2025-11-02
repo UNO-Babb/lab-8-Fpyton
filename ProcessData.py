@@ -26,6 +26,8 @@ def main():
     output = last + "," + first + "," + student_id + "," + major_year + "\n"
     outFile.write(output)
     #print(student_id)
+    print(output, end="")
+
 
   #Close files in the end to save and ensure they are not damaged.
   inFile.close()
