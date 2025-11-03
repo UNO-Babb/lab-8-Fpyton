@@ -11,10 +11,13 @@ def main():
   inFile = open("names.dat", 'r')
   outFile = open("StudentList.csv", 'w')
 
+  outFile.write("Last,      First,  UserID.Major-Year\n")
+
   #Process each line of the input file and output to the CSV file
   #line = inFile.readline()
   for line in inFile:
     data = line.split()
+
     first = data[0]
     last = data[1]
     idNum = data[3]
@@ -26,7 +29,7 @@ def main():
     output = last + "," + first + "," + student_id + "," + major_year + "\n"
     outFile.write(output)
     #print(student_id)
-    print(output, end="")
+    #print(output, end="")
 
 
   #Close files in the end to save and ensure they are not damaged.
@@ -41,8 +44,15 @@ def makeID(first, last, idNum):
     last = last + "X"
   id = first[0] + last + idNum[idLen - 3:]
 
+  idNum_digits = ""
+  for ch in idNum:
+      if ch.isdigit():
+        idNum_digits = idNum_digits + ch
+  last_three = idNum_digits[-3:]
+  user_id = first[0] + last + last_three
+
   #print(id)
-  return id
+  return user_id
 
 def makeMajorYear(major, year):
   # First 3 letters of major (no spaces)
